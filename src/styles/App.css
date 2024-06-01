@@ -1,0 +1,66 @@
+.homepage {
+    display: flex;
+    height: 100%;
+}
+
+.main_content {
+    width: 92%;
+}
+
+.sidebar {
+    position: relative;
+    width: 8%;
+    background-color: black;
+}
+
+.sidebar span {
+    transform: rotate(-90deg);
+    color: white;
+}
+
+.content {
+    margin: 50px 130px;
+    margin-bottom: 70px;
+}
+
+.content h1 {
+    font-size: 3.0em;
+}
+
+.content h2 {
+    font-weight: normal;
+    font-size: 1.1em;
+}
+
+.title_part {
+    margin-bottom: 70px;
+}
+
+.stats_part {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.stats_part .activity {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+.stats_part .details_chart {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.stats_part .aside_stats {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.test {
+    border: 2px black solid;
+}
