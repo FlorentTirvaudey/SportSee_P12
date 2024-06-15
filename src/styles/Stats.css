@@ -1,0 +1,16 @@
+.aside_stats_block {
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+    vertical-align: center;
+    gap: 10px;
+}
+
+.aside_datas {
+    display: flex;
+    flex-direction: column;
+}
+
+.aside_stats_datas {
+    font-weight: bold;
+}
