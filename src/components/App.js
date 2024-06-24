@@ -4,10 +4,21 @@ import { useEffect, useState } from 'react';
 
 import Navbar from './Navbar';
 import Icone from './Icone';
-
-import icones from '../assets/icone.json'
-import { createUserFromMockData } from '../service/api';
 import Stats from './Stats';
+import Activitychart from './Activitychart';
+import Sessionchart from './Sessionchart';
+import Performancechart from './Performancechart';
+
+import { createUserFromMockData } from '../service/api';
+
+import calories from '../assets/calories.png'
+import apple from '../assets/apple.png'
+import cheeseburger from '../assets/cheeseburger.png'
+import chicken from '../assets/chicken.png'
+import cyclisme from '../assets/cyclisme.png'
+import meditation from '../assets/meditation.png'
+import musculation from '../assets/musculation.png'
+import nageurs from '../assets/nageurs.png'
 
 function App() {
   const userId = 12;
@@ -21,7 +32,7 @@ function App() {
       try {
         const response = await createUserFromMockData(userId)
         setUserData(response);
-        console.log("userData from mock", response)
+        // console.log("userData from mock", response)
       } catch (error) {
         console.error(error.message);
       }
@@ -39,37 +50,38 @@ function App() {
         <div>
           {userData && (
               <div className='homepage'>
+                {/* {console.log("test", calories)} */}
                 <aside className='sidebar'>
-                  {icones.map((icone) => (
-                    <div>
-                      {icone.bcolor === 'black' && (
-                        <Icone url={icone.url} bcolor={icone.bcolor} />
-                      )}
+                  <div className='sidebar_icons_container'>
+                    <div className='sidebar_icons'>
+                      <Icone img={meditation} />
+                      <Icone img={nageurs} />
+                      <Icone img={cyclisme} />
+                      <Icone img={musculation} />
                     </div>
-                  ))}
-                  
+                  </div>
                   <span>Copiryght, SportSee 2020</span>
                 </aside>
                 <section className='main_content'>
                   <div className='content'>
                     <div className='title_part'>
-                      <h1>Bonjour {userData.firstName} {userData.lastName}</h1>
+                      <h1>Bonjour <span>{userData.firstName} {userData.lastName}</span></h1>
                       <h2>Félicitation ! Vous avez explosé vos objectifs hier 👏</h2>
                     </div>
                     <div className='stats_part'>
                       <div className='activity'>
-                        <div className='chart_1'>Chart 1</div>
+                        <Activitychart userId={userId} />
                         <div className='details_chart'>
-                          <div className='chart_2'>Chart 2</div>
-                          <div className='chart_3'>Chart 3</div>
+                          <Sessionchart userId={userId} />
+                          <Performancechart userId={userId} />
                           <div className='chart_4'>Chart 4</div>
                         </div>
                       </div>
                       <div className='aside_stats'>
-                        <Stats data={userData.calorieCount} details="Calories" />
-                        <Stats data={userData.proteinCount} details="Protéines" />
-                        <Stats data={userData.carbohydrateCount} details="Glucides" />
-                        <Stats data={userData.lipidCount} details="Lipides" />
+                        <Stats data={userData.calorieCount} details="Calories" icon={calories} />
+                        <Stats data={userData.proteinCount} details="Protéines" icon={chicken} />
+                        <Stats data={userData.carbohydrateCount} details="Glucides" icon={apple} />
+                        <Stats data={userData.lipidCount} details="Lipides" icon={cheeseburger} />
                       </div>
                     </div>
                   </div>

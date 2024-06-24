@@ -1,9 +1,13 @@
 import '../styles/Stats.css'
 
+import Icone from './Icone'
+
 function Stats (props) {
     return (
         <div className='aside_stats_block'>
-            <div>Test</div>
+            <div className='icons_stats'>
+                <Icone img={props.icon} />
+            </div>
             <div className='aside_datas'>
                 {props.details === "Calories" ? (
                     <span className='aside_stats_datas'>{props.data}kCal</span>

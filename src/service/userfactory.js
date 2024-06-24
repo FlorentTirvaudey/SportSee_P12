@@ -17,7 +17,7 @@ const createUser = (data) => {
         calorieCount: formatNumber(data.keyData.calorieCount),
         proteinCount: data.keyData.proteinCount,
         carbohydrateCount: data.keyData.carbohydrateCount,
-        lipidCount: data.keyData.lipidCount
+        lipidCount: data.keyData.lipidCount,
     }
 
     return new User(datasFromApi);
