@@ -11,11 +11,35 @@
     position: relative;
     width: 8%;
     background-color: black;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
 }
 
 .sidebar span {
+    position: absolute;
     transform: rotate(-90deg);
     color: white;
+    height: 15%;
+}
+
+.sidebar_icons {
+    margin: auto;
+    width: 50%;
+}
+
+.sidebar_icons_container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    height: 85%;
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
 }
 
 .content {
@@ -34,6 +58,10 @@
 
 .title_part {
     margin-bottom: 70px;
+}
+
+.title_part span {
+    color: #FF0101;
 }
 
 .stats_part {
