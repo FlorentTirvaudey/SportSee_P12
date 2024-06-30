@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Line, LineChart } from "recharts";
+import { Line, LineChart, Tooltip, XAxis } from "recharts";
 
 import { createSessionFromMockData } from "../service/api";
 
@@ -29,10 +29,14 @@ function Sessionchart(props) {
             {loading && <div>Loading</div>}
             <div>
                 {!loading && (
-                    <div>
-                        {userSessionData && (
+                    <div style={{
+                        backgroundColor: "#FF0000"
+                    }}>
+                        {userSessionData && ( // ajouter responsive container pour gérer la height et width du graph dans la div
                             <LineChart width={300} height={300} data={userSessionData} >
-                                <Line type="monotone" dataKey="sessionLength" stroke="#8884d8" activeDot={{ r: 8 }} />
+                                <XAxis dataKey="day" tickLine="false" />
+                                <Tooltip />
+                                <Line type="monotone" dataKey="sessionLength" stroke="#FFFFFF" strokeWidth={2} activeDot={{ r: 8 }} />
                             </LineChart>
                         )}
                     </div>

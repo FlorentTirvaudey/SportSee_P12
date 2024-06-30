@@ -3,7 +3,7 @@
     flex-direction: row;
     width: 200px;
     align-items: center;
-    gap: 10px;
+    gap: 30px;
 }
 
 .aside_datas {
@@ -13,4 +13,10 @@
 
 .aside_stats_datas {
     font-weight: bold;
+    font-size: 1.8em;
+}
+
+.aside_datas_details {
+    color: #74798C;
+    font-size: 1.4em;
 }

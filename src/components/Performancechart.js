@@ -29,12 +29,14 @@ function Performancechart(props) {
             {loading && <div>Loading</div>}
             <div>
                 {!loading && (
-                    <div>
-                        {userPerformanceData && (
+                    <div style={{
+                        backgroundColor: "#282D30"
+                    }}>
+                        {userPerformanceData && ( // ajouter responsive container pour gérer la height et width du graph dans la div
                             <RadarChart width={300} height={300} cx="50%" cy="50%" outerRadius="80%" data={userPerformanceData} >
-                                <PolarGrid />
-                                <PolarAngleAxis dataKey="kind" />
-                                <Radar name="A remplacer par le nom du gars" dataKey="value" stroke="#00000" fill="#000000" fillOpacity={1} />
+                                <PolarGrid gridType="polygon" radialLines={false} />
+                                <PolarAngleAxis dataKey="kind" tick={{ fill: "white", fontSize: 15 }} />
+                                <Radar name="A remplacer par le nom du gars" dataKey="value" margin="auto" stroke="#FF0101B2" fill="#FF0101B2" fillOpacity={1} />
                             </RadarChart>
                         )}
                     </div>

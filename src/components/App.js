@@ -19,6 +19,7 @@ import cyclisme from '../assets/cyclisme.png'
 import meditation from '../assets/meditation.png'
 import musculation from '../assets/musculation.png'
 import nageurs from '../assets/nageurs.png'
+import Scorechart from './Scorechart';
 
 function App() {
   const userId = 12;
@@ -32,7 +33,7 @@ function App() {
       try {
         const response = await createUserFromMockData(userId)
         setUserData(response);
-        // console.log("userData from mock", response)
+        console.log("userData from mock", response)
       } catch (error) {
         console.error(error.message);
       }
@@ -74,14 +75,14 @@ function App() {
                         <div className='details_chart'>
                           <Sessionchart userId={userId} />
                           <Performancechart userId={userId} />
-                          <div className='chart_4'>Chart 4</div>
+                          <Scorechart name={userData.lastname} score={userData.score} />
                         </div>
                       </div>
                       <div className='aside_stats'>
-                        <Stats data={userData.calorieCount} details="Calories" icon={calories} />
-                        <Stats data={userData.proteinCount} details="Protéines" icon={chicken} />
-                        <Stats data={userData.carbohydrateCount} details="Glucides" icon={apple} />
-                        <Stats data={userData.lipidCount} details="Lipides" icon={cheeseburger} />
+                        <Stats data={userData.calorieCount} details="Calories" icon={calories} background={"#FF00001A"} />
+                        <Stats data={userData.proteinCount} details="Protéines" icon={chicken} background={"#4AB8FF1A"} />
+                        <Stats data={userData.carbohydrateCount} details="Glucides" icon={apple} background={"#F9CE231A"} />
+                        <Stats data={userData.lipidCount} details="Lipides" icon={cheeseburger} background={"#FD51811A"} />
                       </div>
                     </div>
                   </div>

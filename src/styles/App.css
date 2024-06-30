@@ -9,24 +9,24 @@
 
 .sidebar {
     position: relative;
-    width: 8%;
+    width: 10%;
     background-color: black;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
 }
 
 .sidebar span {
     position: absolute;
     transform: rotate(-90deg);
     color: white;
-    height: 15%;
+    width: 100%;
+    font-size: 0.99em;
 }
 
 .sidebar_icons {
-    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
     width: 50%;
+    margin: auto;
 }
 
 .sidebar_icons_container {
@@ -36,10 +36,6 @@
     align-items: center;
     justify-content: center;
     height: 85%;
-    /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
 }
 
 .content {
