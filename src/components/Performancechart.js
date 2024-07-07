@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { RadarChart, Radar, PolarAngleAxis, PolarGrid } from "recharts";
+import { RadarChart, Radar, PolarAngleAxis, PolarGrid, ResponsiveContainer } from "recharts";
 
 import { createPerformanceFromMockData } from "../service/api";
 
@@ -25,24 +25,26 @@ function Performancechart(props) {
     }, [])
 
     return (
-        <div>
+        <>
             {loading && <div>Loading</div>}
-            <div>
+            <>
                 {!loading && (
-                    <div style={{
+                    <div className="bloc_chart" style={{
                         backgroundColor: "#282D30"
                     }}>
-                        {userPerformanceData && ( // ajouter responsive container pour gérer la height et width du graph dans la div
-                            <RadarChart width={300} height={300} cx="50%" cy="50%" outerRadius="80%" data={userPerformanceData} >
-                                <PolarGrid gridType="polygon" radialLines={false} />
-                                <PolarAngleAxis dataKey="kind" tick={{ fill: "white", fontSize: 15 }} />
-                                <Radar name="A remplacer par le nom du gars" dataKey="value" margin="auto" stroke="#FF0101B2" fill="#FF0101B2" fillOpacity={1} />
-                            </RadarChart>
+                        {userPerformanceData && (
+                            <ResponsiveContainer width="100%" height={300}>
+                                <RadarChart cx="50%" cy="50%" outerRadius="70%" data={userPerformanceData} >
+                                    <PolarGrid gridType="polygon" radialLines={false} />
+                                    <PolarAngleAxis dataKey="kind" tick={{ fill: "white", fontSize: 15 }} />
+                                    <Radar name="A remplacer par le nom du gars" dataKey="value" margin="auto" stroke="#FF0101B2" fill="#FF0101B2" fillOpacity={1} />
+                                </RadarChart>
+                            </ResponsiveContainer>
                         )}
                     </div>
                 )}
-            </div>
-        </div>
+            </>
+        </>
     )
 }
 

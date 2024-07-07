@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { Line, LineChart, Tooltip, XAxis } from "recharts";
+import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis, Area } from "recharts";
+
+import '../styles/Charts.css'
+
+import Customcursor from "./Customcursor";
 
 import { createSessionFromMockData } from "../service/api";
 
@@ -14,7 +18,7 @@ function Sessionchart(props) {
             try {
             const response = await createSessionFromMockData(props.userId)
             setUserSessionData(response);
-            // console.log("session Datas from mock", response)
+            console.log("ahahahahahh Datas from mock", response)
             } catch (error) {
             console.error(error.message);
             }
@@ -25,24 +29,28 @@ function Sessionchart(props) {
     }, [])
 
     return (
-        <div>
+        <>
             {loading && <div>Loading</div>}
-            <div>
+            <>
                 {!loading && (
-                    <div style={{
+                    <div className="bloc_chart" style={{
                         backgroundColor: "#FF0000"
                     }}>
-                        {userSessionData && ( // ajouter responsive container pour gérer la height et width du graph dans la div
-                            <LineChart width={300} height={300} data={userSessionData} >
-                                <XAxis dataKey="day" tickLine="false" />
-                                <Tooltip />
-                                <Line type="monotone" dataKey="sessionLength" stroke="#FFFFFF" strokeWidth={2} activeDot={{ r: 8 }} />
-                            </LineChart>
+                        <span>Durée moyenne des sessions</span>
+                        {userSessionData && (
+                            <ResponsiveContainer width="100%" height={150} style={{position: "absolute", bottom: 30}}>
+                                <LineChart data={userSessionData}  >
+                                    <XAxis dataKey="day" tickLine={false} tickMargin={18} axisLine={false} tick={{fill: 'white', opacity: '0.7'}}/>
+                                    <Tooltip cursor={false} content={Customcursor} />
+                                    <Line type="monotone" dataKey="sessionLength" stroke="#FFFFFF" strokeOpacity={0.6} strokeWidth={3} activeDot={{ r: 10, opacity: 0.2 }} />
+                                    <Area />
+                                </LineChart>
+                            </ResponsiveContainer>
                         )}
                     </div>
                 )}
-            </div>
-        </div>
+            </>
+        </>
     )
 }
 

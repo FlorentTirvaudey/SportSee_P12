@@ -1,41 +1,50 @@
-import { useState } from "react";
 import { ResponsiveContainer, RadialBarChart, PolarAngleAxis, RadialBar } from "recharts";
 
 function Scorechart(props) {
 
-    const [dataScore, setDataScore] = useState([
+    const data = [
         {
-            name: "",
-            score: 0,
-            max: 100,
-          },
-    ]);
-    const [userScore, setUserScore] = useState();
+          name: 'Score',
+        //   value: props.score * 100,
+        value: 100,
+          fill: '#E60000',
+        },
+      ];
 
-    const formatScore = () => {
-        setUserScore(props.score * 100);
-    } // à modifier parce que crash appli
 
-    const buildTabDatas = () => {
-        setDataScore([
-            {
-                name: props.name,
-                score: userScore 
-            }
-        ])
-    } // à modifier parce que crash appli (faire ce state dans App et passer l'objet en props pour voir)
-
+      console.log("allez j'y crois dur comme fer", data)
     return (
-            <ResponsiveContainer width="100%" height="100%">
-                <RadialBarChart cx="50%" cy="50%" innerRadius="100%" outerRadius="80%" barSize={10} data={dataScore}>
-                    <PolarAngleAxis type="number" domain={[0, 100]} dataKey={'pct'} angleAxisId={0} tick={false} />
+        
+        <div className="bloc_chart" style={{
+            backgroundColor: "#FBFBFB"
+        }}>
+            <div className="score_title">Score</div>
+            <ResponsiveContainer width="100%" height={250} style={{position: "absolute", bottom: 20}}>
+                <RadialBarChart
+                    width={300}
+                    height={300}
+                    innerRadius={110}
+                    outerRadius={140}
+                    barSize={15}
+                    data={data}
+                    startAngle={180}
+                    endAngle={-180}
+                >
+                    <PolarAngleAxis type="number" domain={[0, 100]} dataKey={'pct'} angleAxisId={0} tick={false} fill="#FBFBFB" />
                         <RadialBar
-                        label={{ fill: '#fff' }}
-                        dataKey="uv"
+                        dataKey="value"
                         cornerRadius={10}
                         />
+                <text
+                    x='50%'
+                    y='50%'
+                    textAnchor="middle"
+                    className="progress-label"
+                    style={{ fontSize: 24, fontWeight: 'bold' }}
+                    >{props.score * 100}% <span>de votre objectif</span></text>
                 </RadialBarChart>
             </ResponsiveContainer>
+        </div>
     )
 }
 
