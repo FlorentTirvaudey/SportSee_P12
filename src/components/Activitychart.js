@@ -50,16 +50,19 @@ function Activitychart(props) {
                                     <CartesianGrid vertical={false} strokeDasharray="3 3" />
                                     <XAxis dataKey="index" tickLine={false} tickMargin={15} axisLine={{strokeOpacity: 0.7}}/>
                                     <YAxis
+                                        yAxisId="left"
+                                        orientation={"left"}
+                                        hide={true}
+                                    />
+                                    <YAxis
+                                        yAxisId="right"
                                         orientation={"right"}
                                         tickLine={false}
                                         axisLine={false}
-                                        domain={[0, 'dataMax + 10']}  
                                     />
-                                    {/* <YAxis dataKey="kilogram" /> */}
-                                    {/* <YAxis /> */}
                                     <Tooltip content={Tooltipactivitychart} />
-                                    <Bar dataKey="kilogram" radius={[20, 20, 0, 0]} maxBarSize={10} barSize={10} fill="#282D30" />
-                                    <Bar dataKey="calories" radius={[20, 20, 0, 0]} maxBarSize={10} barSize={10} fill="#E60000" />
+                                    <Bar dataKey="kilogram" yAxisId="right" radius={[20, 20, 0, 0]} maxBarSize={10} barSize={10} fill="#282D30" />
+                                    <Bar dataKey="calories" yAxisId="left" radius={[20, 20, 0, 0]} maxBarSize={10} barSize={10} fill="#E60000" />
                                 </BarChart>
                                 </ResponsiveContainer>
                         )}
