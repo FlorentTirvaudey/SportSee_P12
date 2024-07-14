@@ -75,7 +75,9 @@ function App() {
                         <div className='details_chart'>
                           <Sessionchart userId={userId} />
                           <Performancechart userId={userId} />
-                          <Scorechart name={userData.lastname} score={userData.score} />
+                          {<Performancechart/> && (
+                            <Scorechart name={userData.lastname} score={userData.score} />
+                          )}
                         </div>
                       </div>
                       <div className='aside_stats'>

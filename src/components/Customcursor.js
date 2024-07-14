@@ -1,8 +1,11 @@
+import { Rectangle } from 'recharts'
 import '../styles/Charts.css'
 
-function Customcursor() {
+function Customcursor(props) {
+    const { points, width, height, stroke } = props;
+    const { x, y } = points[0];
     return (
-        <div className="black_side_cursor"></div>
+        <Rectangle fill='black' stroke='black' opacity={0.1} x={x} y={0} width={width} height={height + 300} style={{ position: 'absolute', top: 0, overflow: 'hidden' }}  />
     )
 }
 

@@ -60,7 +60,7 @@ function Activitychart(props) {
                                         tickLine={false}
                                         axisLine={false}
                                     />
-                                    <Tooltip content={Tooltipactivitychart} />
+                                    <Tooltip content={Tooltipactivitychart} cursor={{ fill: 'rgba(0, 0, 0, 0.1' }} />
                                     <Bar dataKey="kilogram" yAxisId="right" radius={[20, 20, 0, 0]} maxBarSize={10} barSize={10} fill="#282D30" />
                                     <Bar dataKey="calories" yAxisId="left" radius={[20, 20, 0, 0]} maxBarSize={10} barSize={10} fill="#E60000" />
                                 </BarChart>

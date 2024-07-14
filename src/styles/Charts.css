@@ -77,7 +77,7 @@
 .bloc_chart span {
     position: absolute;
     top: 30px;
-    left: 40px;
+    left: 20px;
     opacity: 0.7;
     color: white;
     max-width: 200px;
@@ -97,5 +97,46 @@
     top: 30px;
     left: 40px;
     font-size: 1.3em;
-    
+
+}
+
+/** Session chart **/
+.container_tooltip_session {
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.ext_dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.int_dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255);
+}
+
+/** Score chart **/
+.score_label {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 1.2em;
+    max-width: 100px;
+    color: #74798C;
+}
+
+.bold_label {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #282D30;
 }

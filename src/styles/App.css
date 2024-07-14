@@ -1,3 +1,7 @@
+* {
+    /* font-family: ; */
+}
+
 .homepage {
     display: flex;
     height: 100%;
@@ -63,7 +67,7 @@
 .stats_part {
     display: flex;
     flex-direction: row;
-    gap: 30px;
+    gap: 100px;
 }
 
 .stats_part .activity {
