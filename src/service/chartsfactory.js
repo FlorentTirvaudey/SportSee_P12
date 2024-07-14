@@ -60,6 +60,33 @@ export const formatPerformanceData = (data) => {
         formattedDatas.push(itemInObject)
     })
 
+    console.log(formattedDatas)
+
+    formattedDatas.forEach((label) => {
+        switch (label.kind) {
+            case 'energy':
+                label.kind = 'Energie'
+                break;
+            case 'cardio':
+                label.kind = 'Cardio'
+                break;
+            case 'endurance':
+                label.kind = 'Endurance'
+                break;
+            case 'strenght':
+                label.kind = 'Force'
+                break;
+            case 'speed':
+                label.kind = 'Vitesse'
+                break;
+            case 'intensity':
+                label.kind = 'Intensité'
+                break;
+                default:
+                    break;
+        }
+    })
+
     return formattedDatas
     
 }

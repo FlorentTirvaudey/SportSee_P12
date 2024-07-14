@@ -67,7 +67,7 @@
 .stats_part {
     display: flex;
     flex-direction: row;
-    gap: 100px;
+    gap: 50px;
 }
 
 .stats_part .activity {
@@ -80,7 +80,7 @@
 .stats_part .details_chart {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 40px;
+    gap: 30px;
 }
 
 .stats_part .aside_stats {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { RadarChart, Radar, PolarAngleAxis, PolarGrid, ResponsiveContainer, PolarRadiusAxis } from "recharts";
+import { RadarChart, Radar, PolarAngleAxis, PolarGrid, ResponsiveContainer, PolarRadiusAxis, Text } from "recharts";
 
 import { createPerformanceFromMockData } from "../service/api";
 
@@ -14,7 +14,7 @@ function Performancechart(props) {
             try {
             const response = await createPerformanceFromMockData(props.userId)
             setUserPerformanceData(response);
-            console.log("session Datas from mock", response)
+            console.log("performance Datas from mock", response)
             } catch (error) {
             console.error(error.message);
             }
@@ -23,6 +23,14 @@ function Performancechart(props) {
 
     fetchPerformanceData();
     }, [])
+
+    function renderPolarAngleAxis({ payload, x, y, cx, cy, ...rest }) {
+        return (
+            <Text {...rest} verticalAnchor="middle" y={y + (y - cy) / 10} x={x + (x - cx) / 10} fill="white" >
+                {payload.value}
+            </Text>
+        )
+    }
 
     return (
         <>
@@ -36,7 +44,7 @@ function Performancechart(props) {
                             <ResponsiveContainer width="100%" height={300}>
                                 <RadarChart cx="50%" cy="50%" outerRadius="60%" data={userPerformanceData} >
                                     <PolarGrid gridType="polygon" radialLines={false} />
-                                    <PolarAngleAxis dataKey="kind" tick={{ fill: "white", fontSize: 15 }} />
+                                    <PolarAngleAxis dataKey="kind" tick={props => renderPolarAngleAxis(props)} />
                                     <PolarRadiusAxis tickCount={6} tick={false} axisLine={false} />
                                     <Radar dataKey="value" margin="auto" stroke="#FF0101B2" fill="#FF0101B2" fillOpacity={1} />
                                 </RadarChart>
