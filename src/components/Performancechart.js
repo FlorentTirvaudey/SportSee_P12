@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { RadarChart, Radar, PolarAngleAxis, PolarGrid, ResponsiveContainer, PolarRadiusAxis, Text } from "recharts";
 
-import { createPerformanceFromMockData } from "../service/api";
+import { createPerformanceFromFetchData, createPerformanceFromMockData } from "../service/api";
 
 function Performancechart(props) {
 
@@ -12,9 +12,10 @@ function Performancechart(props) {
         const fetchPerformanceData = async () => {
             setLoading(true);
             try {
-            const response = await createPerformanceFromMockData(props.userId)
+            const response = await createPerformanceFromFetchData(props.userId)
+            // const responseMock = await createPerformanceFromMockData(props.userId)
+
             setUserPerformanceData(response);
-            console.log("performance Datas from mock", response)
             } catch (error) {
             console.error(error.message);
             }

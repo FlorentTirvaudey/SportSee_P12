@@ -1,6 +1,6 @@
 export const formatActivityData = (data) => {
     let formattedDatas = []
-    const valuesObjectData = Object.values(data.session);
+    const valuesObjectData = Object.values(data.sessions);
 
     valuesObjectData.forEach(itemInObject => {
         formattedDatas.push(itemInObject)
@@ -11,7 +11,7 @@ export const formatActivityData = (data) => {
 
 export const formatSessionData = (data) => {
     let formattedDatas = []
-    const valuesObjectData = Object.values(data.session)
+    const valuesObjectData = Object.values(data.sessions)
 
     valuesObjectData.forEach(itemInObject => {
         formattedDatas.push(itemInObject)
@@ -22,6 +22,7 @@ export const formatSessionData = (data) => {
 
 export const formatPerformanceData = (data) => {
     let formattedDatas = []
+    console.log("faire des test pour les perf dans la foncion de format", data)
 
     const valuesObjectData = Object.values(data.data)
 
@@ -59,8 +60,6 @@ export const formatPerformanceData = (data) => {
 
         formattedDatas.push(itemInObject)
     })
-
-    console.log(formattedDatas)
 
     formattedDatas.forEach((label) => {
         switch (label.kind) {

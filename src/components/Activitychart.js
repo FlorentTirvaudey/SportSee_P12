@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer, Legend } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
 
-import { createActivityFromMockData } from "../service/api";
+import { createActivityFromFetchData, createActivityFromMockData } from "../service/api";
 
 import Legendactivitychart from "./Legendactivitychart";
 import Tooltipactivitychart from "./Tooltipactivitychart";
@@ -15,11 +15,11 @@ function Activitychart(props) {
         const fetchActivityData = async () => {
             setLoading(true);
             try {
-            const response = await createActivityFromMockData(props.userId)
+            const response = await createActivityFromFetchData(props.userId)
+            // const responseMock = await createActivityFromMockData(props.userId)
 
             const dataWithIndices = response.map((data, index) => ({ ...data, index: index + 1}));
             setUserActivityData(dataWithIndices);
-            console.log("activityData from mock", response)
             } catch (error) {
             console.error(error.message);
             }

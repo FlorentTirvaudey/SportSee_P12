@@ -1,6 +1,7 @@
 const mockDataActivity = {
     '12': {
-        session: {
+        userId: 12,
+        sessions: {
             0: {
                 day: "2020-07-01",
                 kilogram: 80,

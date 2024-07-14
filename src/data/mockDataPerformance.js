@@ -1,5 +1,6 @@
 const mockDataPerformance = {
     '12': {
+        userId: 12,
         kind: {
             1: "cardio",
             2: "energy",

@@ -9,7 +9,7 @@ import Activitychart from './Activitychart';
 import Sessionchart from './Sessionchart';
 import Performancechart from './Performancechart';
 
-import { createUserFromMockData } from '../service/api';
+import { createUserFromAPIData, createUserFromMockData } from '../service/api';
 
 import calories from '../assets/calories.png'
 import apple from '../assets/apple.png'
@@ -22,7 +22,7 @@ import nageurs from '../assets/nageurs.png'
 import Scorechart from './Scorechart';
 
 function App() {
-  const userId = 12;
+  const userId = 18;
 
   const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState([]);
@@ -31,9 +31,10 @@ function App() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await createUserFromMockData(userId)
+        const response = await createUserFromAPIData(userId)
+        // const responseMock = await createUserFromMockData(userId)
+
         setUserData(response);
-        console.log("userData from mock", response)
       } catch (error) {
         console.error(error.message);
       }
@@ -49,9 +50,8 @@ function App() {
       {loading && <div>Loading</div>}
       {!loading && (
         <div>
-          {userData && (
+          {userData && (userId === 12 || userId === 18) ? (
               <div className='homepage'>
-                {/* {console.log("test", calories)} */}
                 <aside className='sidebar'>
                   <div className='sidebar_icons_container'>
                     <div className='sidebar_icons'>
@@ -90,6 +90,8 @@ function App() {
                   </div>
                 </section>
               </div>
+          ) : (
+            <div className='no_user_found'>L'utilisateur n'existe pas</div>
           )}
         </div>
       )}

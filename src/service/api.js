@@ -15,7 +15,6 @@ import mockDataPerformance from "../data/mockDataPerformance";
 export const fetchData = async (endpoint) => {
     try {
         const response = await axios.get(`http://localhost:3000/user/${endpoint}`)
-        console.log("datas", response.data)
         return response.data;
     } catch (error) {
         console.error('Error fetching data', error);
@@ -25,7 +24,7 @@ export const fetchData = async (endpoint) => {
 
 export const createUserFromAPIData = async (userId) => {
     const data = await fetchData(`${userId}`)
-    return createUser(data)
+    return createUser(data.data)
 }
 
 /**
@@ -36,7 +35,6 @@ export const createUserFromAPIData = async (userId) => {
 export const fetchDataActivity = async (endpoint) => {
     try {
         const response = await axios.get(`http://localhost:3000/user/${endpoint}/activity`)
-        console.log("datas activity", response.data)
         return response.data;
     } catch (error) {
         console.error('Error fetching data', error);
@@ -44,20 +42,29 @@ export const fetchDataActivity = async (endpoint) => {
     }
 }
 
+export const createActivityFromFetchData = async (userId) => {
+    const data = await fetchDataActivity(`${userId}`)
+    return formatActivityData(data.data)
+}
+
 /**
  * 
  *  API call to fetch session datas
  * 
  */
-export const fetchDataAverageSession = async (endpoint) => {
+export const fecthDataSession = async (endpoint) => {
     try {
         const response = await axios.get(`http://localhost:3000/user/${endpoint}/average-sessions`)
-        console.log("datas average session", response.data)
         return response.data;
     } catch (error) {
         console.error('Error fetching data', error);
         throw error;
     }
+}
+
+export const createSessionFromFetchData = async (userId) => {
+    const data = await fecthDataSession(`${userId}`)
+    return formatActivityData(data.data)
 }
 
 /**
@@ -68,12 +75,16 @@ export const fetchDataAverageSession = async (endpoint) => {
 export const fetchDataPerformance = async (endpoint) => {
     try {
         const response = await axios.get(`http://localhost:3000/user/${endpoint}/performance`)
-        console.log("datas performance", response.data)
         return response.data;
     } catch (error) {
         console.error('Error fetching data', error);
         throw error;
     }
+}
+
+export const createPerformanceFromFetchData = async (userId) => {
+    const data = await fetchDataPerformance(`${userId}`)
+    return formatPerformanceData(data.data)
 }
 
 /**
@@ -114,7 +125,7 @@ export const createActivityFromMockData = async (userId) => {
 
 /**
  * 
- *  Fetching mock datas
+ *  Fetching mock session datas
  * 
  */
 export const fecthMockDataSession = (endpoint) => {
@@ -132,7 +143,7 @@ export const createSessionFromMockData = async (userId) => {
 
 /**
  * 
- *  Fetching mock datas
+ *  Fetching mock performance datas
  * 
  */
 export const fecthMockDataPerformance = (endpoint) => {

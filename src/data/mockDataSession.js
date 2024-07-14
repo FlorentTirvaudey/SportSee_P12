@@ -1,5 +1,6 @@
 const mockDataSession = {
     '12': {
+        userId: 12,
         session: {
             0: {
                 day: 1,

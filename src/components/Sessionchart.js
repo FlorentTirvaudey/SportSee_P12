@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis, Area } from "recharts";
+import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 
 import '../styles/Charts.css'
 
 import Customcursor from "./Customcursor";
 
-import { createSessionFromMockData } from "../service/api";
+import { createSessionFromFetchData, createSessionFromMockData } from "../service/api";
 import Tooltipsessionchart from "./Tooltipsessionchart.js";
 import Dotsessionchart from "./Dotsessionchart.js";
 
@@ -36,10 +36,11 @@ function Sessionchart(props) {
         const fetchSessionData = async () => {
             setLoading(true);
             try {
-                const response = await createSessionFromMockData(props.userId)
+                const response = await createSessionFromFetchData(props.userId)
+                // const responseMock = await createSessionFromMockData(props.userId)
+
                 const datasModify = modifySessionData(response)
                 const modififyWithDayLabels = addDayLabels(datasModify)
-                console.log("test", response)
                 setUserSessionData(modififyWithDayLabels);
             } catch (error) {
                 console.error(error.message);
