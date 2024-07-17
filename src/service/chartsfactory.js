@@ -22,7 +22,6 @@ export const formatSessionData = (data) => {
 
 export const formatPerformanceData = (data) => {
     let formattedDatas = []
-    console.log("faire des test pour les perf dans la foncion de format", data)
 
     const valuesObjectData = Object.values(data.data)
 
