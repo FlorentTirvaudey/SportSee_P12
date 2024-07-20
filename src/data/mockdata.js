@@ -18,7 +18,7 @@ const mockData = {
     '18': {
         id: 18,
         userInfos: {
-            firstName: 'Cecilia',
+            firstName: 'Cécilia',
             lastName: 'Ratorez',
             age: 34
         },

@@ -1,102 +1,25 @@
-import '../styles/App.css';
+import '../styles/App.css'
 
-import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'
 
-import Navbar from './Navbar';
-import Icone from './Icone';
-import Stats from './Stats';
-import Activitychart from './Activitychart';
-import Sessionchart from './Sessionchart';
-import Performancechart from './Performancechart';
-
-import { createUserFromAPIData, createUserFromMockData } from '../service/api';
-
-import calories from '../assets/calories.png'
-import apple from '../assets/apple.png'
-import cheeseburger from '../assets/cheeseburger.png'
-import chicken from '../assets/chicken.png'
-import cyclisme from '../assets/cyclisme.png'
-import meditation from '../assets/meditation.png'
-import musculation from '../assets/musculation.png'
-import nageurs from '../assets/nageurs.png'
-import Scorechart from './Scorechart';
+import Navbar from "./Navbar"
 
 function App() {
-  const userId = 18;
-
-  const [loading, setLoading] = useState(true);
-  const [userData, setUserData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const response = await createUserFromAPIData(userId)
-        // const responseMock = await createUserFromMockData(userId)
-
-        setUserData(response);
-      } catch (error) {
-        console.error(error.message);
-      }
-      setLoading(false)
-    }
-
-    fetchData();
-  }, [])
-
-  return (
-    <div>
-      <Navbar />
-      {loading && <div>Loading</div>}
-      {!loading && (
+    return (
         <div>
-          {userData && (userId === 12 || userId === 18) ? (
-              <div className='homepage'>
-                <aside className='sidebar'>
-                  <div className='sidebar_icons_container'>
-                    <div className='sidebar_icons'>
-                      <Icone img={meditation} />
-                      <Icone img={nageurs} />
-                      <Icone img={cyclisme} />
-                      <Icone img={musculation} />
-                    </div>
-                  </div>
-                  <span>Copiryght, SportSee 2020</span>
-                </aside>
-                <section className='main_content'>
-                  <div className='content'>
-                    <div className='title_part'>
-                      <h1>Bonjour <span>{userData.firstName} {userData.lastName}</span></h1>
-                      <h2>Félicitation ! Vous avez explosé vos objectifs hier 👏</h2>
-                    </div>
-                    <div className='stats_part'>
-                      <div className='activity'>
-                        <Activitychart userId={userId} />
-                        <div className='details_chart'>
-                          <Sessionchart userId={userId} />
-                          <Performancechart userId={userId} />
-                          {<Performancechart/> && (
-                            <Scorechart name={userData.lastname} score={userData.score} />
-                          )}
-                        </div>
-                      </div>
-                      <div className='aside_stats'>
-                        <Stats data={userData.calorieCount} details="Calories" icon={calories} background={"#FF00001A"} />
-                        <Stats data={userData.proteinCount} details="Protéines" icon={chicken} background={"#4AB8FF1A"} />
-                        <Stats data={userData.carbohydrateCount} details="Glucides" icon={apple} background={"#F9CE231A"} />
-                        <Stats data={userData.lipidCount} details="Lipides" icon={cheeseburger} background={"#FD51811A"} />
-                      </div>
-                    </div>
-                  </div>
-                </section>
-              </div>
-          ) : (
-            <div className='no_user_found'>L'utilisateur n'existe pas</div>
-          )}
+            <Navbar />
+            <div className="main_content_mainpage">
+                <h1 className="main_title">Bienvenue sur <span>Sportsee</span></h1>
+                <p>Veuillez choisir la méthode de récupération et les datas relatives à un de ces deux utilisateur :</p>
+                <div className="choice_container">
+                    <Link className='links_black' to="/user/12/mock"><button>USER 12 : MOCK Karl</button></Link>
+                    <Link className='links_black' to="/user/12/api"><button>USER 12 : API Karl</button></Link>
+                    <Link className='links_black' to="/user/18/mock"><button>USER 18 : MOCK Cécilia</button></Link>
+                    <Link className='links_black' to="/user/18/api"><button>User 18 : API Cécilia</button></Link>
+                </div>
+            </div>
         </div>
-      )}
-    </div>
-  );
+    )
 }
 
-export default App;
+export default App

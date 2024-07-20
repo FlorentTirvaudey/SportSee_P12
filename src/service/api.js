@@ -11,7 +11,7 @@ import mockDataPerformance from "../data/mockDataPerformance";
  * 
  *   API call to fetch user datas
  * 
- */
+*/
 export const fetchData = async (endpoint) => {
     try {
         const response = await axios.get(`http://localhost:3000/user/${endpoint}`)
@@ -64,7 +64,7 @@ export const fecthDataSession = async (endpoint) => {
 
 export const createSessionFromFetchData = async (userId) => {
     const data = await fecthDataSession(`${userId}`)
-    return formatActivityData(data.data)
+    return formatSessionData(data.data)
 }
 
 /**
@@ -138,7 +138,7 @@ export const fecthMockDataSession = (endpoint) => {
 
 export const createSessionFromMockData = async (userId) => {
     const data = await fecthMockDataSession(`${userId}`)
-    return formatSessionData(data)
+    return formatSessionData(data.data)
 }
 
 /**

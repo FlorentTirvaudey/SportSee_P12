@@ -1,35 +1,72 @@
 const mockDataSession = {
     '12': {
-        userId: 12,
-        session: {
-            0: {
-                day: 1,
-                sessionLength: 30
-            },
-            1: {
-                day: 2,
-                sessionLength: 23
-            },
-            2: {
-                day: 3,
-                sessionLength: 45
-            },
-            3: {
-                day: 4,
-                sessionLength: 50
-            },
-            4: {
-                day: 5,
-                sessionLength: 0
-            },
-            5: {
-                day: 6,
-                sessionLength: 0
-            },
-            6: {
-                day: 7,
-                sessionLength: 60
-            }
+        data: {
+            userId: 12,
+            sessions: [
+                {
+                    day: 1,
+                    sessionLength: 30
+                },
+                {
+                    day: 2,
+                    sessionLength: 23
+                },
+                {
+                    day: 3,
+                    sessionLength: 45
+                },
+                {
+                    day: 4,
+                    sessionLength: 50
+                },
+                {
+                    day: 5,
+                    sessionLength: 0
+                },
+                {
+                    day: 6,
+                    sessionLength: 0
+                },
+                {
+                    day: 7,
+                    sessionLength: 60
+                }
+            ]
+        }
+    },
+    '18': {
+        data: {
+            userId: 18,
+            sessions: [
+                {
+                    day: 1,
+                    sessionLength: 30
+                },
+                {
+                    day: 2,
+                    sessionLength: 40
+                },
+                {
+                    day: 3,
+                    sessionLength: 50
+                },
+                {
+                    day: 4,
+                    sessionLength: 30
+                },
+                {
+                    day: 5,
+                    sessionLength: 30
+                },
+                {
+                    day: 6,
+                    sessionLength: 50
+                },
+                {
+                    day: 7,
+                    sessionLength: 50
+                }
+            ]
         }
     }
 }
