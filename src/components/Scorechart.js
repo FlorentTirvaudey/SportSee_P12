@@ -1,15 +1,6 @@
-import { useEffect, useState } from "react";
 import { ResponsiveContainer, RadialBarChart, PolarAngleAxis, RadialBar } from "recharts";
 
 function Scorechart(props) {
-
-    // const [loading, setLoading] = useState(true);
-
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setLoading(false);
-    //     }, 1500)
-    // }, []);
 
     const data = [
         {
@@ -29,7 +20,7 @@ function Scorechart(props) {
                     <RadialBarChart
                         width={300}
                         height={300}
-                        innerRadius={110}
+                        innerRadius={80}
                         outerRadius={140}
                         barSize={15}
                         data={data}

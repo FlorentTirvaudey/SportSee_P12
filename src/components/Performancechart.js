@@ -4,7 +4,7 @@ function Performancechart(props) {
 
     function renderPolarAngleAxis({ payload, x, y, cx, cy, ...rest }) {
         return (
-            <Text {...rest} verticalAnchor="middle" y={y + (y - cy) / 10} x={x + (x - cx) / 10} fill="white" >
+            <Text {...rest} verticalAnchor="middle" y={y + (y - cy) / 10} x={x + (x - cx) / 10} fill="white" fontSize="1.2em" className="text_performance_chart" >
                 {payload.value}
             </Text>
         )
@@ -17,7 +17,7 @@ function Performancechart(props) {
             }}>
                 {props.userPerformanceData && (
                     <ResponsiveContainer width="100%" height={300}>
-                        <RadarChart cx="50%" cy="50%" outerRadius="60%" data={props.userPerformanceData} >
+                        <RadarChart cx="50%" cy="50%" outerRadius="50%" data={props.userPerformanceData} >
                             <PolarGrid gridType="polygon" radialLines={false} />
                             <PolarAngleAxis dataKey="kind" tick={props => renderPolarAngleAxis(props)} />
                             <PolarRadiusAxis tickCount={6} tick={false} axisLine={false} />

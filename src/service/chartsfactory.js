@@ -71,7 +71,7 @@ export const formatPerformanceData = (data) => {
             case 'endurance':
                 label.kind = 'Endurance'
                 break;
-            case 'strenght':
+            case 'strength':
                 label.kind = 'Force'
                 break;
             case 'speed':

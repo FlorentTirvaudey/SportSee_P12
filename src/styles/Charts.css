@@ -9,13 +9,13 @@
 }
 
 .title_chart_activity {
-    width: 65%;
+    width: 50%;
     color: #20253A;
-    font-size: 1.4em;
+    font-size: 1.1em;
 }
 
 .legend_block {
-    width: 35%;
+    width: 50%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -30,20 +30,20 @@
 }
 
 .legend_content span {
-    font-size: 1.2em;
+    font-size: 0.9em;
     color: #74798C;
 }
 
 .legend_color_kilogram {
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background-color: #282D30;
 }
 
 .legend_color_calories {
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background-color: #E60000;
 }
@@ -139,4 +139,46 @@
     font-size: 1.5em;
     font-weight: bold;
     color: #282D30;
+}
+
+@media screen and (min-width: 1501px) {
+    .text_performance_chart {
+        font-size: 1.2em;
+    }
+
+    .title_chart_activity {
+        width: 70%;
+    }
+
+    .legend_block {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 1500px) and (min-width: 1301px) {
+    .text_performance_chart {
+        font-size: 0.8em;
+    }
+
+    .title_chart_activity {
+        width: 70%;
+    }
+
+    .legend_block {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 1300px) and (min-width: 1024px) {
+    .text_performance_chart {
+        font-size: 0.6em;
+    }
+
+    .title_chart_activity {
+        width: 60%;
+    }
+
+    .legend_block {
+        width: 40%;
+    }
 }
